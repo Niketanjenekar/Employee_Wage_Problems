@@ -13,15 +13,23 @@ namespace Employee_Wage_Programs
             int Full_Time = 1;
             Random random = new Random();
 
-            int CheckAttendence = random.Next(2);
+            int CheckAttendance = random.Next(2);
 
-            if (CheckAttendence == Full_Time)
+            int Wage_Per_Hour = 20, Full_Time_Hours = 8;
+
+
+            int Employee_Wage;
+
+            if (CheckAttendance == Full_Time)
             {
-                Console.WriteLine("Employee is Present");
+                Employee_Wage = Wage_Per_Hour * Full_Time_Hours;
+
+                Console.WriteLine("Employee Wage is : " + Employee_Wage + " Rupees");
             }
             else
             {
-                Console.WriteLine("Employee is Absent");
+
+                Console.WriteLine("The Employee is Absent");
             }
 
         }
