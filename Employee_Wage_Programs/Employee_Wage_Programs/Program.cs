@@ -14,7 +14,7 @@ namespace Employee_Wage_Programs
 
             //***************Day-3 Assignments***************
 
-            Console.WriteLine("Use_Case-4 for using Switch Case statements");
+            Console.WriteLine("Use_Case-5 for Calculating Wages of Employees for a Month");
 
             EmployeeWage_UseCases.Employee_Attendance();
 
