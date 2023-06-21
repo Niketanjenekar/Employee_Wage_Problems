@@ -14,7 +14,7 @@ namespace Employee_Wage_Programs
 
             //***************Day-3 Assignments***************
 
-            Console.WriteLine("Use_Case-3 for Adding Part-Time Employee and Wage");
+            Console.WriteLine("Use_Case-4 for using Switch Case statements");
 
             EmployeeWage_UseCases.Employee_Attendance();
 
