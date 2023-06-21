@@ -12,6 +12,12 @@ namespace Employee_Wage_Programs
         {
             Console.WriteLine("**** Welcome to Employee Wage Computation Program ****");
 
+            //***************Day-3 Assignments***************
+
+            Console.WriteLine("Use_Case-1 for checking Employee is Present or Absent");
+
+            EmployeeWage_UseCases.Employee_Attendance();
+
             Console.ReadLine();
         }
     }
