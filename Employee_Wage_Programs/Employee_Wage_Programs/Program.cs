@@ -12,9 +12,9 @@ namespace Employee_Wage_Programs
         {
             Console.WriteLine("**** Welcome to Employee Wage Computation Program ****");
 
-            //***************Day-3 Assignments***************
+            //***************Day-9 Assignments***************
 
-            Console.WriteLine("Use_Case-5 for Calculating Wages of Employees for a Month");
+            Console.WriteLine("Use_Case-6 for Calculating Wages of Employees for a Month Untill the Condition Satisfied");
 
             EmployeeWage_UseCases.Employee_Attendance();
 

@@ -11,42 +11,45 @@ namespace Employee_Wage_Programs
         public static void Employee_Attendance()
         {
             int Wage_Per_Hour = 20, Full_Time_Hours = 8, Part_Time_Hours = 4;
-            int Number_of_Working_Days = 20;
-
+            int Number_of_Working_Days = 0;
+            int Number_of_Working_Hours = 0;
+            int max_Working_Hours = 100;
+            int max_Working_Days = 20;
+            int Employee_Wage_for_Month;
             Random random = new Random();
 
-            int CheckAttendence = random.Next(3);
 
-            int Employee_Wage_for_Month;
-
-            switch (CheckAttendence)
+            while (Number_of_Working_Days < max_Working_Days && Number_of_Working_Hours < max_Working_Hours)
             {
-                case 1:
+                int Employee = random.Next(3);
+                switch (Employee)
+                {
+                    case 1:
 
-                    Console.WriteLine("Employee is Present for Full Time");
+                        Console.WriteLine("Employee is Present for Full Time");
 
-                    Employee_Wage_for_Month = Wage_Per_Hour * Full_Time_Hours * Number_of_Working_Days;
+                        Number_of_Working_Hours += Full_Time_Hours;
 
-                    Console.WriteLine("Employee Wage of Full_Time Employees for a Month is : " + Employee_Wage_for_Month + " Rupees");
+                        break;
 
-                    break;
+                    case 2:
+                        Console.WriteLine("Employee is Present for Part Time");
 
-                case 2:
-                    Console.WriteLine("Employee is Present for Part Time");
+                        Number_of_Working_Hours += Part_Time_Hours;
 
-                    Employee_Wage_for_Month = Wage_Per_Hour * Part_Time_Hours * Number_of_Working_Days;
+                        break;
 
-                    Console.WriteLine("Employee Wage of Part_Time Employees for a Month is : " + Employee_Wage_for_Month + " Rupees");
+                    default:
 
-                    break;
+                        Console.WriteLine("Employee is Absent");
 
-                default:
+                        break;
+                }
 
-                    Console.WriteLine("Employee is Absent");
+                Employee_Wage_for_Month = Number_of_Working_Hours * Wage_Per_Hour;
 
-                    break;
+                Console.WriteLine("Employee Wage of Employees for a Month is : " + Employee_Wage_for_Month + " Rupees");
             }
-
         }
     }
 }
