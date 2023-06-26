@@ -14,7 +14,7 @@ namespace Employee_Wage_Programs
 
             //***************Day-9 Assignments***************
 
-            Console.WriteLine("Use_Case-6 for Calculating Wages of Employees for a Month Untill the Condition Satisfied");
+            Console.WriteLine("Use_Case-7 for Calculating Class Method  to Compute Employee Wages of Employees for a Month");
 
             EmployeeWage_UseCases.Employee_Attendance();
 
