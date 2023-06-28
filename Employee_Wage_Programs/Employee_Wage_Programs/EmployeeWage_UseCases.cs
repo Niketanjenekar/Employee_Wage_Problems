@@ -8,19 +8,20 @@ namespace Employee_Wage_Programs
 {
     public class EmployeeWage_UseCases
     {
-        public static void Employee_Attendance()
+        public void Employee_Attendance(string companyName, int wage_Per_Hour, 
+            int total_Working_Days, int total_Working_Hours)
         {
-            int Wage_Per_Hour = 20, Full_Time_Hours = 8, Part_Time_Hours = 4;
-            int Number_of_Working_Days = 0;
-            int Number_of_Working_Hours = 0;
-            int max_Working_Hours = 100;
-            int max_Working_Days = 20;
-            int Employee_Wage_for_Month;
+            int Full_Time_Hours = 8, Part_Time_Hours = 4;
+            int number_of_Working_Hours = 0, number_of_Working_Days = 0;
+            int employee_Wage_for_Month;
+
+            Console.WriteLine("This is the Employee Wage Calculation For " + companyName +" is :");
+            Console.WriteLine();
+
             Random random = new Random();
-
-
-            while (Number_of_Working_Days < max_Working_Days && Number_of_Working_Hours < max_Working_Hours)
+            while(number_of_Working_Days <= total_Working_Days && number_of_Working_Hours <= total_Working_Hours)
             {
+                
                 int Employee = random.Next(3);
                 switch (Employee)
                 {
@@ -28,14 +29,14 @@ namespace Employee_Wage_Programs
 
                         Console.WriteLine("Employee is Present for Full Time");
 
-                        Number_of_Working_Hours += Full_Time_Hours;
+                        number_of_Working_Hours += Full_Time_Hours;
 
                         break;
 
                     case 2:
                         Console.WriteLine("Employee is Present for Part Time");
 
-                        Number_of_Working_Hours += Part_Time_Hours;
+                        number_of_Working_Days += Part_Time_Hours;
 
                         break;
 
@@ -46,10 +47,13 @@ namespace Employee_Wage_Programs
                         break;
                 }
 
-                Employee_Wage_for_Month = Number_of_Working_Hours * Wage_Per_Hour;
+                employee_Wage_for_Month = number_of_Working_Hours * wage_Per_Hour;
 
-                Console.WriteLine("Employee Wage of Employees for a Month is : " + Employee_Wage_for_Month + " Rupees");
+                Console.WriteLine("Employee Wage of Employees of  " + companyName + " for a Month is :" +
+                                    " " + employee_Wage_for_Month + " Rupees");
+                Console.WriteLine();
             }
+            Console.WriteLine("***********************************************************************************************");
         }
     }
 }
