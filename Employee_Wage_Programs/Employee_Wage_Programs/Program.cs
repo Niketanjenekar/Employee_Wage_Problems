@@ -12,19 +12,22 @@ namespace Employee_Wage_Programs
         {
             Console.WriteLine("**** Welcome to Employee Wage Computation Program ****");
 
-            //**************************Day - 9 Assignments**************************
+            //**************************Day - 10 Assignments**************************
 
-            Console.WriteLine("Use_Case-8 for Calculating Employee Wages for Multiple Companies");
+            Console.WriteLine("Use_Case-9 for Ability to save total Employee Wages for Multiple Companies");
                                     
-            EmployeeWage_UseCases employeeWage_UseCases = new EmployeeWage_UseCases();
-            
-            employeeWage_UseCases.Employee_Attendance("Suzuki", 1100, 30, 240);
+            EmployeeWageBuilder suzuki = new EmployeeWageBuilder("Suzuki", 1100, 30, 240);
+            suzuki.Employee_Attendance();
 
-            employeeWage_UseCases.Employee_Attendance("Tata", 1500, 31, 230);
+            EmployeeWageBuilder tata = new EmployeeWageBuilder("Tata", 1500, 31, 230);
+            tata.Employee_Attendance();
             
-            employeeWage_UseCases.Employee_Attendance("Hyundai", 1105, 29, 215);
+            EmployeeWageBuilder hyundai = new EmployeeWageBuilder("Hyundai", 1105, 29, 215);
+            hyundai.Employee_Attendance();
             
-            employeeWage_UseCases.Employee_Attendance("Mahindra", 1035, 28, 235);
+            EmployeeWageBuilder mahindra = new EmployeeWageBuilder("Mahindra", 1035, 28, 235);
+            mahindra.Employee_Attendance();
+
 
             Console.ReadLine();
         }
