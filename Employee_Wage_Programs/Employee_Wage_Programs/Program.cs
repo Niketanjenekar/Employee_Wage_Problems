@@ -14,10 +14,11 @@ namespace Employee_Wage_Programs
 
             //**************************Day - 10 Assignments**************************
 
-            Console.WriteLine("Use_Case-9 for Ability to save total Employee Wages for Multiple Companies");
+            Console.WriteLine("Use_Case-10 for Ability to save total Employee Wages for Multiple Companies in an Array");
                                     
             EmployeeWageBuilder suzuki = new EmployeeWageBuilder("Suzuki", 1100, 30, 240);
             suzuki.Employee_Attendance();
+            
 
             EmployeeWageBuilder tata = new EmployeeWageBuilder("Tata", 1500, 31, 230);
             tata.Employee_Attendance();
