@@ -7,73 +7,96 @@ using System.Threading.Tasks;
 
 namespace Employee_Wage_Programs
 {
-    public class EmployeeWageBuilder
+    interface IEmpWageCalculator
     {
-        private string companyName;
-        private int wage_Per_Hour;
-        private int total_Working_Days;
-        private int total_Working_Hours;
-        private Array[] computeArray;
+        void AddCompany(string companyName, int wage_Per_Hour, int total_Working_Days, int total_Working_Hours);
+        void Employee_Attendance();
+    }
+    public class CompanyEmployeeWage
+    {
+        public string companyName { get; set; }
+        public int wage_Per_Hour { get; set; }
+        public int total_Working_Days { get; set; }
+        public int total_Working_Hours { get; set; }
 
+        public int totalEmpWage { get; set; }
 
-        public EmployeeWageBuilder(string companyName, int wage_Per_Hour, int total_Working_Days, int total_Working_Hours)
+        public CompanyEmployeeWage(string companyname, int wageper_Hour, int total_working_Days, int total_working_Hours)
         {
-            this.companyName = companyName;
-            this.wage_Per_Hour = wage_Per_Hour;
-            this.total_Working_Days = total_Working_Days;
-            this.total_Working_Hours = total_Working_Hours;
-            computeArray = new Array[5];
+            companyName = companyname;
+            wage_Per_Hour = wageper_Hour;
+            total_Working_Days = total_working_Days;
+            total_Working_Hours = total_working_Hours;
+            totalEmpWage = 0;
+        }
+
+    }
+    public class EmployeeWageBuilder : IEmpWageCalculator
+    {
+
+        private CompanyEmployeeWage[] companyEmployeeWage;
+        private int numberOfCompany;
+        public EmployeeWageBuilder()
+        {
+            companyEmployeeWage = new CompanyEmployeeWage[5];
+            numberOfCompany = 0;
+        }
+        public void AddCompany(string companyname, int wageper_Hour, int total_working_Days, int total_working_Hours)
+        {
+            if(numberOfCompany <= 5)
+            {
+                companyEmployeeWage[numberOfCompany] = new CompanyEmployeeWage(companyname, wageper_Hour, total_working_Days, total_working_Hours);
+                numberOfCompany++;
+            }
+            
         }
 
         public void Employee_Attendance()
         {
-            
-            int number_of_Working_Days = 0;
-            int number_of_Working_Hours = 0;
-            int Full_Time_Hours = 8, Part_Time_Hours = 4;
-            int employee_Wage_for_Month = 0;
-            
-            
-            Console.WriteLine();
-            Console.WriteLine("This is the Employee Wage Calculation For "+ companyName +" is :");
-            Console.WriteLine();
-            
-            Random random = new Random();
-            while (number_of_Working_Days <= total_Working_Days &&
-                number_of_Working_Hours <= total_Working_Hours)
+            for(int i= 0; i<numberOfCompany; i++)
             {
-                computeArray = new Array[4];
-                
-                int Employee = random.Next(3);
-                switch (Employee)
+                int number_of_Working_Days = 0;
+                int number_of_Working_Hours = 0;
+                int Full_Time_Hours = 8;
+                int Part_Time_Hours = 4;
+
+                Random random = new Random();
+                while (number_of_Working_Days <= companyEmployeeWage[i].total_Working_Days &&
+                    number_of_Working_Hours <= companyEmployeeWage[i].total_Working_Hours)
                 {
-                    case 1:
+                    int Employee = random.Next(3);
+                    switch (Employee)
+                    {
+                        case 1:
 
-                        Console.WriteLine("Employee is Present for Full Time");
-                        number_of_Working_Hours += Full_Time_Hours;
-                        break;
+                            Console.WriteLine("Employee is Present for Full Time");
+                            number_of_Working_Hours += Full_Time_Hours;
+                            break;
 
-                    case 2:
-                        Console.WriteLine("Employee is Present for Part Time");
-                        number_of_Working_Days += Part_Time_Hours;
-                        break;
+                        case 2:
+                            Console.WriteLine("Employee is Present for Part Time");
+                            number_of_Working_Hours += Part_Time_Hours;
+                            break;
 
-                    default:
-                        Console.WriteLine("Employee is Absent");
-                        break;
+                        default:
+                            Console.WriteLine("Employee is Absent");
+                            break;
+                    }
+                    companyEmployeeWage[i].totalEmpWage = number_of_Working_Hours * companyEmployeeWage[i].wage_Per_Hour;
+                    Console.WriteLine("Calculated Wage for Employee is : " + companyEmployeeWage[i].totalEmpWage);
                 }
-                employee_Wage_for_Month = number_of_Working_Hours * wage_Per_Hour;
-                Console.WriteLine("Calculated Wage for Employee is : " + employee_Wage_for_Month);
+                Console.WriteLine("Employee Wage of Employees of  " + companyEmployeeWage[i].companyName + " for a Month is : " +
+                                     companyEmployeeWage[i].totalEmpWage + " Rupees");
+
+                Console.WriteLine("Employee Wage per Hour is : " + companyEmployeeWage[i].wage_Per_Hour);
+                Console.WriteLine("Employee Total Working Days are " + companyEmployeeWage[i].total_Working_Days);
+                Console.WriteLine("Employee Total Working Hours are " + companyEmployeeWage[i].total_Working_Hours);
+
+                Console.WriteLine("************************************************************************");
             }
             
-            Console.WriteLine("Employee Wage of Employees of  "+ companyName +" for a Month is : "+
-                                     employee_Wage_for_Month +" Rupees");
             
-            Console.WriteLine("Employee Wage per Hour is : "+ wage_Per_Hour);
-            Console.WriteLine("Employee Total Working Days are "+ total_Working_Days);
-            Console.WriteLine("Employee Total Working Hours are "+ total_Working_Hours);
             
-            Console.WriteLine("************************************************************************");
         }
     }
     
