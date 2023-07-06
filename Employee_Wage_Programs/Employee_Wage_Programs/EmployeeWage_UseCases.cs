@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -34,26 +35,25 @@ namespace Employee_Wage_Programs
     public class EmployeeWageBuilder : IEmpWageCalculator
     {
 
-        private CompanyEmployeeWage[] companyEmployeeWage;
-        private int numberOfCompany;
+        private ArrayList companyEmployeeWage;
+        
         public EmployeeWageBuilder()
         {
-            companyEmployeeWage = new CompanyEmployeeWage[5];
-            numberOfCompany = 0;
+            companyEmployeeWage = new ArrayList(5);
+           
         }
         public void AddCompany(string companyname, int wageper_Hour, int total_working_Days, int total_working_Hours)
         {
-            if(numberOfCompany <= 5)
-            {
-                companyEmployeeWage[numberOfCompany] = new CompanyEmployeeWage(companyname, wageper_Hour, total_working_Days, total_working_Hours);
-                numberOfCompany++;
-            }
+           
+            
+            CompanyEmployeeWage companyemployeeWage = new CompanyEmployeeWage(companyname, wageper_Hour, total_working_Days, total_working_Hours);
+            companyEmployeeWage.Add(companyemployeeWage);
             
         }
 
         public void Employee_Attendance()
         {
-            for(int i= 0; i<numberOfCompany; i++)
+            foreach(CompanyEmployeeWage companyEmployeeWage in companyEmployeeWage)
             {
                 int number_of_Working_Days = 0;
                 int number_of_Working_Hours = 0;
@@ -61,8 +61,8 @@ namespace Employee_Wage_Programs
                 int Part_Time_Hours = 4;
 
                 Random random = new Random();
-                while (number_of_Working_Days <= companyEmployeeWage[i].total_Working_Days &&
-                    number_of_Working_Hours <= companyEmployeeWage[i].total_Working_Hours)
+                while (number_of_Working_Days <= companyEmployeeWage.total_Working_Days &&
+                    number_of_Working_Hours <= companyEmployeeWage.total_Working_Hours)
                 {
                     int Employee = random.Next(3);
                     switch (Employee)
@@ -82,15 +82,15 @@ namespace Employee_Wage_Programs
                             Console.WriteLine("Employee is Absent");
                             break;
                     }
-                    companyEmployeeWage[i].totalEmpWage = number_of_Working_Hours * companyEmployeeWage[i].wage_Per_Hour;
-                    Console.WriteLine("Calculated Wage for Employee is : " + companyEmployeeWage[i].totalEmpWage);
+                    companyEmployeeWage.totalEmpWage = number_of_Working_Hours * companyEmployeeWage.wage_Per_Hour;
+                    Console.WriteLine("Calculated Wage for Employee is : " + companyEmployeeWage.totalEmpWage);
                 }
-                Console.WriteLine("Employee Wage of Employees of  " + companyEmployeeWage[i].companyName + " for a Month is : " +
-                                     companyEmployeeWage[i].totalEmpWage + " Rupees");
+                Console.WriteLine("Employee Wage of Employees of  " + companyEmployeeWage.companyName + " for a Month is : " +
+                                     companyEmployeeWage.totalEmpWage + " Rupees");
 
-                Console.WriteLine("Employee Wage per Hour is : " + companyEmployeeWage[i].wage_Per_Hour);
-                Console.WriteLine("Employee Total Working Days are " + companyEmployeeWage[i].total_Working_Days);
-                Console.WriteLine("Employee Total Working Hours are " + companyEmployeeWage[i].total_Working_Hours);
+                Console.WriteLine("Employee Wage per Hour is : " + companyEmployeeWage.wage_Per_Hour);
+                Console.WriteLine("Employee Total Working Days are " + companyEmployeeWage.total_Working_Days);
+                Console.WriteLine("Employee Total Working Hours are " + companyEmployeeWage.total_Working_Hours);
 
                 Console.WriteLine("************************************************************************");
             }

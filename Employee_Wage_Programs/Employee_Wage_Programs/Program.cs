@@ -14,7 +14,7 @@ namespace Employee_Wage_Programs
 
             //**************************Day - 10 Assignments**************************
 
-            Console.WriteLine("Use_Case-11 for Ability to save total Employee Wages for Multiple Companies in an Array Using Interface Approach ");
+            Console.WriteLine("Use_Case-12 for Ability to save total Employee Wages for Multiple Companies in ArrayList Using Interface Approach ");
                                     
             IEmpWageCalculator empWageCalculator = new EmployeeWageBuilder();
             empWageCalculator.AddCompany("Suzuki", 1100, 30, 240);
