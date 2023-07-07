@@ -12,6 +12,7 @@ namespace Employee_Wage_Programs
     {
         void AddCompany(string companyname, int wageper_Hour, int total_working_Days, int total_working_Hours);
         void Employee_Attendance();
+        int QueriedByCompany(string companyname);
     }
     public class CompanyEmployeeWage
     {
@@ -41,6 +42,17 @@ namespace Employee_Wage_Programs
         {
             companyEmployeeWage = new ArrayList();
            
+        }
+        public int QueriedByCompany(string companyname)
+        {
+            foreach(CompanyEmployeeWage companyEmployeeWage in companyEmployeeWage)
+            {
+                if (companyEmployeeWage.companyName == companyname)
+                {
+                    return companyEmployeeWage.totalEmpWage;
+                }
+            }
+            return 0;
         }
         public void AddCompany(string companyname, int wageper_Hour, int total_working_Days, int total_working_Hours)
         {
